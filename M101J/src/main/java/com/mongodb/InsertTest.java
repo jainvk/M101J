@@ -34,8 +34,11 @@ public class InsertTest
         collection.drop();
         Document smith = new Document("name", "Smith")
                 .append("age",30)
-                .append("prifession", "programmer");
-        collection.insertOne(smith);
+                .append("profession", "programmer");
+        Document jones = new Document("name", "Jones")
+                .append("age",42)
+                .append("profession", "hacker");
+        collection.insertMany(asList(smith, jones));
 
 //        Document doc = new Document()
 //                .append("str", "Hello Mongo")
