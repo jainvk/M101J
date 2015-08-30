@@ -16,7 +16,7 @@ import java.io.StringWriter;
 public class Helpers {
     public static void printJson(Document doc) {
 
-        JsonWriter writer = new JsonWriter(new StringWriter(),new JsonWriterSettings(JsonMode.SHELL,true));
+        JsonWriter writer = new JsonWriter(new StringWriter(),new JsonWriterSettings(JsonMode.SHELL,false));
         new DocumentCodec().encode(writer,doc, EncoderContext.builder().isEncodingCollectibleDocument(true).build());
         System.out.println(writer.getWriter());
         System.out.flush();

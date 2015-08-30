@@ -1,13 +1,17 @@
 package com.mongodb;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import static com.google.common.collect.Lists.newArrayList;
+import static com.mongodb.Helpers.printJson;
 import static java.util.Arrays.asList;
 
 /**
@@ -20,12 +24,14 @@ public class InsertTest
     {
 
 
+
+
         System.out.println( "Hello World!" );
         MongoClientURI mongoClientURI = new MongoClientURI("mongodb://localhost:27017");
         MongoClientOptions options =
                 MongoClientOptions.builder()
-                .connectionsPerHost(10)
-                .build();
+                        .connectionsPerHost(10)
+                        .build();
 
         MongoClient mongoClient = new MongoClient(asList(new ServerAddress("localhost", 27017)), options);
         MongoDatabase db = mongoClient.getDatabase("course").withReadPreference(ReadPreference.secondary());
@@ -40,6 +46,7 @@ public class InsertTest
                 .append("profession", "hacker");
         collection.insertMany(asList(smith, jones));
 
+//        collection.insertOne(new Document("x", 1));
 //        Document doc = new Document()
 //                .append("str", "Hello Mongo")
 //                .append("int", 40)
@@ -53,8 +60,6 @@ public class InsertTest
 //                .append("list", asList(1,2,3,4));
 //
         Helpers.printJson(smith);
-
-
 
 
     }
